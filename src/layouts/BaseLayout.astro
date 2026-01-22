@@ -1,5 +1,6 @@
 ---
 const { title, description } = Astro.props;
+const canonical = Astro.url.origin + Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -9,9 +10,22 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="Jdf2P-A0e4P3PQZo514ds_cSS_EjW1xfv2f6jVo6uQw" />
-<link rel="canonical" href={Astro.url.origin + Astro.url.pathname} />
+    <link rel="canonical" href={canonical} />
+
     <title>{title}</title>
     {description ? <meta name="description" content={description} /> : null}
+
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Preis pro 100 Rechner" />
+    <meta property="og:title" content={title} />
+    {description ? <meta property="og:description" content={description} /> : null}
+    <meta property="og:url" content={canonical} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    {description ? <meta name="twitter:description" content={description} /> : null}
+
     <style>
       :root {
         --bg: #0b0e14;
@@ -59,6 +73,13 @@ const { title, description } = Astro.props;
         color: var(--muted);
         font-size: 12px;
       }
+
+      .footerLinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
     </style>
   </head>
 
@@ -82,7 +103,13 @@ const { title, description } = Astro.props;
       </main>
 
       <footer class="footer">
-<a href="/ueber">Über</a> · <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+        <div class="footerLinks">
+          <a href="/ueber">Über</a>
+          <span>·</span>
+          <a href="/impressum">Impressum</a>
+          <span>·</span>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
       </footer>
     </div>
   </body>
