@@ -7,6 +7,9 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="Jdf2P-A0e4P3PQZo514ds_cSS_EjW1xfv2f6jVo6uQw" />
+<link rel="canonical" href={Astro.url.href} />
     <title>{title}</title>
     {description ? <meta name="description" content={description} /> : null}
     <style>
