@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import RelatedLinks from "../components/RelatedLinks.astro";
-import Adsense from "../components/Adsense.astro";
 
 const title = "Preis pro 100 Rechner";
 const description =
@@ -47,8 +46,4 @@ const related = [
 
   <RelatedLinks title="Beliebte Rechner" links={related} />
   <FaqBlock items={faq} />
-
-  <Fragment slot="ad">
-    <Adsense client="ca-pub-XXXXXXXXXXXXXXX" slot="0000000000" />
-  </Fragment>
 </BaseLayout>

@@ -1,4 +1,6 @@
 ---
+import Adsense from "../components/Adsense.astro";
+
 const { title, description } = Astro.props;
 const canonical = Astro.url.origin + Astro.url.pathname;
 
@@ -132,8 +134,10 @@ const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
 
       <div class="adWrap">
         <div class="adNote">Anzeige</div>
-        <!-- AdSense später aktivieren -->
-        <slot name="ad" />
+        <!-- Wenn Seite eigenen Ad Slot liefert, wird der genutzt, sonst Default -->
+        <slot name="ad">
+          <Adsense client="ca-pub-XXXXXXXXXXXXXXX" slot="0000000000" />
+        </slot>
       </div>
 
       <footer class="footer">
