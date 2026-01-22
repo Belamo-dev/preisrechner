@@ -1,0 +1,11 @@
+---
+const { title = "Weiter", links = [] } = Astro.props;
+// links: Array<{ href: string; label: string }>
+---
+
+<h2>{title}</h2>
+<ul>
+  {links.map((l) => (
+    <li><a href={l.href}>{l.label}</a></li>
+  ))}
+</ul>

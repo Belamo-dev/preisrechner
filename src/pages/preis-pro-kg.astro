@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
-import FaqJsonLd from "../components/FaqJsonLd.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
 
 const title = "Preis pro kg berechnen";
 const description =
@@ -10,15 +11,19 @@ const description =
 const faq = [
   { q: "Wie bekomme ich €/kg aus €/100 g?", a: "Preis pro kg ist Preis pro 100 g mal 10." },
   { q: "Wie rechne ich kg in g um?", a: "1 kg entspricht 1000 g." },
-  { q: "Warum gibt es am Regal unterschiedliche Angaben?", a: "Je nach Produkt zeigt der Handel €/kg oder €/100 g an, beides ist korrekt." },
+  { q: "Warum ist €/kg manchmal sinnvoller?", a: "Bei großen Mengen ist €/kg übersichtlicher als €/100 g." },
+];
+
+const related = [
+  { href: "/preis-pro-100g", label: "Preis pro 100 g berechnen" },
+  { href: "/menge-umrechnen-g-kg", label: "g und kg umrechnen" },
+  { href: "/grundpreis-berechnen", label: "Grundpreis berechnen" },
 ];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
-
-  <FaqJsonLd items={faq} />
 
   <p>
     Wenn du einen Preis pro kg möchtest, kannst du das über den Grundpreis pro 100 g ableiten. Das ist
@@ -31,15 +36,6 @@ const faq = [
   <h2>Rechner</h2>
   <Calculator />
 
-  <h2>FAQ</h2>
-  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
-  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
-  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
-
-  <h2>Weiter</h2>
-  <ul>
-    <li><a href="/menge-umrechnen-g-kg">g und kg umrechnen</a></li>
-    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
-    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
-  </ul>
+  <FaqBlock items={faq} />
+  <RelatedLinks links={related} />
 </BaseLayout>

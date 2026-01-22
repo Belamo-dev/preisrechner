@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
-import FaqJsonLd from "../components/FaqJsonLd.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
 
 const title = "2 für 1 Angebot berechnen";
 const description =
@@ -12,13 +13,17 @@ const faq = [
   { q: "Wie rechne ich 3 für 2?", a: "Preis mal 2 und Menge mal 3, dann den Grundpreis berechnen." },
   { q: "Was ist 2. Artikel 50 %?", a: "Du zahlst effektiv 1,5 Artikelpreise für 2 Stück. Also Preis mal 1,5 und Menge mal 2." },
 ];
+
+const related = [
+  { href: "/rabatt-rechner", label: "Rabatt berechnen" },
+  { href: "/angebot-vergleichen", label: "Angebote vergleichen" },
+  { href: "/grundpreis-berechnen", label: "Grundpreis berechnen" },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
-
-  <FaqJsonLd items={faq} />
 
   <p>
     Bei 2 für 1 bezahlst du einen Preis und bekommst die doppelte Menge. Für den Grundpreis ist das
@@ -34,15 +39,6 @@ const faq = [
   <h2>Rechner</h2>
   <Calculator />
 
-  <h2>FAQ</h2>
-  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
-  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
-  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
-
-  <h2>Weiter</h2>
-  <ul>
-    <li><a href="/rabatt-rechner">Rabatt berechnen</a></li>
-    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
-    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
-  </ul>
+  <FaqBlock items={faq} />
+  <RelatedLinks links={related} />
 </BaseLayout>

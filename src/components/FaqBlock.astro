@@ -1,10 +1,11 @@
 ---
-const { items } = Astro.props;
+const { items = [] } = Astro.props;
 // items: Array<{ q: string; a: string }>
+
 const json = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: (items || []).map((x) => ({
+  mainEntity: items.map((x) => ({
     "@type": "Question",
     name: x.q,
     acceptedAnswer: { "@type": "Answer", text: x.a },
@@ -15,3 +16,8 @@ const json = {
 <script type="application/ld+json">
   {JSON.stringify(json)}
 </script>
+
+<h2>FAQ</h2>
+{items.map((x) => (
+  <p><strong>{x.q}</strong><br />{x.a}</p>
+))}

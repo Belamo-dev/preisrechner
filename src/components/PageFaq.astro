@@ -1,0 +1,9 @@
+---
+const { items = [] } = Astro.props;
+// items: Array<{ q: string; a: string }>
+---
+
+<h2>FAQ</h2>
+{items.map((x) => (
+  <p><strong>{x.q}</strong><br />{x.a}</p>
+))}

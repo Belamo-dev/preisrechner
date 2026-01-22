@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
-import FaqJsonLd from "../components/FaqJsonLd.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
 
 const title = "ml in l umrechnen";
 const description =
@@ -12,13 +13,17 @@ const faq = [
   { q: "1,5 l sind wie viel ml?", a: "1,5 l sind 1500 ml." },
   { q: "Warum ist Umrechnen wichtig?", a: "Weil du nur mit gleichen Einheiten fair vergleichen kannst." },
 ];
+
+const related = [
+  { href: "/preis-pro-100ml", label: "Preis pro 100 ml berechnen" },
+  { href: "/preis-pro-liter", label: "Preis pro Liter berechnen" },
+  { href: "/grundpreis-berechnen", label: "Grundpreis berechnen" },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
-
-  <FaqJsonLd items={faq} />
 
   <p>
     Bei Getränken und Flüssigkeiten ist mal ml, mal l angegeben. Mit der Umrechnung sind Preise schnell
@@ -35,15 +40,6 @@ const faq = [
   <h2>Rechner</h2>
   <Calculator />
 
-  <h2>FAQ</h2>
-  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
-  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
-  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
-
-  <h2>Weiter</h2>
-  <ul>
-    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
-    <li><a href="/preis-pro-liter">Preis pro Liter berechnen</a></li>
-    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
-  </ul>
+  <FaqBlock items={faq} />
+  <RelatedLinks links={related} />
 </BaseLayout>

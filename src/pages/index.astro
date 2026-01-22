@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
-import FaqJsonLd from "../components/FaqJsonLd.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
 
 const title = "Preis pro 100 Rechner";
 const description =
@@ -21,13 +22,19 @@ const faq = [
     a: "Kleine Abweichungen können durch Rundungen oder leicht andere Mengenangaben entstehen.",
   },
 ];
+
+const related = [
+  { href: "/preis-pro-100g", label: "Preis pro 100 g berechnen" },
+  { href: "/preis-pro-100ml", label: "Preis pro 100 ml berechnen" },
+  { href: "/angebot-vergleichen", label: "Angebote vergleichen" },
+  { href: "/rabatt-rechner", label: "Rabatt berechnen" },
+  { href: "/2-fuer-1-rechner", label: "2 für 1 Angebot berechnen" },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
-
-  <FaqJsonLd items={faq} />
 
   <Calculator />
 
@@ -37,25 +44,6 @@ const faq = [
     unterschiedlich sind. So siehst du sofort, welches Angebot wirklich günstiger ist.
   </p>
 
-  <h2>Beliebte Rechner</h2>
-  <ul>
-    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
-    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
-    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
-    <li><a href="/rabatt-rechner">Rabatt berechnen</a></li>
-    <li><a href="/2-fuer-1-rechner">2 für 1 Angebot berechnen</a></li>
-  </ul>
-
-  <h2>So nutzt du den Rechner</h2>
-  <ol>
-    <li>Preis und Menge für Produkt A eingeben.</li>
-    <li>Einheit wählen (g, kg, ml, l).</li>
-    <li>Optional Produkt B eingeben und vergleichen.</li>
-    <li>Ergebnis kopieren oder Link teilen.</li>
-  </ol>
-
-  <h2>FAQ</h2>
-  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
-  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
-  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
+  <RelatedLinks title="Beliebte Rechner" links={related} />
+  <FaqBlock items={faq} />
 </BaseLayout>
