@@ -3,8 +3,8 @@ const { title, description } = Astro.props;
 const canonical = Astro.url.origin + Astro.url.pathname;
 
 // Assets in /public
-const ogImage = `${Astro.url.origin}/og.png`;     // falls du PNG nutzt
-const ogImageSvg = `${Astro.url.origin}/og.svg`; // Fallback, wenn du nur SVG hast
+const ogImage = `${Astro.url.origin}/og.png`;
+const ogImageSvg = `${Astro.url.origin}/og.svg`;
 const faviconSvg = `${Astro.url.origin}/favicon.svg`;
 const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
 ---
@@ -31,7 +31,6 @@ const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
     {description ? <meta property="og:description" content={description} /> : null}
     <meta property="og:url" content={canonical} />
 
-    {/* Social Preview Image */}
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
     <meta property="og:image:alt" content="Preis pro 100 Rechner" />
@@ -98,6 +97,17 @@ const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
         gap: 10px;
         align-items: center;
       }
+
+      .adWrap {
+        margin-top: 18px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+      .adNote {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
     </style>
   </head>
 
@@ -119,6 +129,12 @@ const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
       <main class="content">
         <slot />
       </main>
+
+      <div class="adWrap">
+        <div class="adNote">Anzeige</div>
+        <!-- AdSense später aktivieren -->
+        <slot name="ad" />
+      </div>
 
       <footer class="footer">
         <div class="footerLinks">
