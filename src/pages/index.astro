@@ -3,12 +3,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Preis pro 100 Rechner";
-const description = "Preis pro 100 g/ml berechnen und zwei Produkte vergleichen. Schnell, kostenlos, ohne Anmeldung.";
+const description =
+  "Preis pro 100 g/ml berechnen und zwei Produkte vergleichen. Schnell, kostenlos, ohne Anmeldung.";
 ---
 
 <BaseLayout title={title} description={description}>
-  <h1 slot="header">Preis pro 100 Rechner</h1>
+  <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
   <Calculator />
+
+  <h2>Warum Grundpreis vergleichen?</h2>
+  <p>
+    Der Grundpreis pro 100 g oder pro 100 ml macht Produkte vergleichbar, auch wenn Packungsgrößen
+    unterschiedlich sind. So siehst du sofort, welches Angebot wirklich günstiger ist.
+  </p>
+
+  <h2>Beliebte Rechner</h2>
+  <ul>
+    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
+    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+    <li><a href="/rabatt-rechner">Rabatt berechnen</a></li>
+    <li><a href="/2-fuer-1-rechner">2 für 1 Angebot berechnen</a></li>
+  </ul>
+
+  <h2>So nutzt du den Rechner</h2>
+  <ol>
+    <li>Preis und Menge für Produkt A eingeben.</li>
+    <li>Einheit wählen (g, kg, ml, l).</li>
+    <li>Optional Produkt B eingeben und vergleichen.</li>
+    <li>Ergebnis kopieren oder Link teilen.</li>
+  </ol>
 </BaseLayout>
