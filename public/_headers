@@ -1,4 +1,8 @@
-/sitemap.xml
+/sitemap-index.xml
+  X-Robots-Tag: index, follow
+  Content-Type: application/xml; charset=utf-8
+
+/sitemap-*.xml
   X-Robots-Tag: index, follow
   Content-Type: application/xml; charset=utf-8
 
