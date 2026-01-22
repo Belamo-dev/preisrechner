@@ -1,19 +1,28 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Preis pro kg berechnen";
 const description =
   "Preis pro Kilogramm berechnen und Packungsgrößen fair vergleichen. Einfach aus Preis und Menge.";
+
+const faq = [
+  { q: "Wie bekomme ich €/kg aus €/100 g?", a: "Preis pro kg ist Preis pro 100 g mal 10." },
+  { q: "Wie rechne ich kg in g um?", a: "1 kg entspricht 1000 g." },
+  { q: "Warum gibt es am Regal unterschiedliche Angaben?", a: "Je nach Produkt zeigt der Handel €/kg oder €/100 g an, beides ist korrekt." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
+  <FaqJsonLd items={faq} />
+
   <p>
     Wenn du einen Preis pro kg möchtest, kannst du das über den Grundpreis pro 100 g ableiten. Das ist
-    praktisch, weil viele Produkte am Regal genau so ausgezeichnet sind.
+    praktisch, weil viele Produkte am Regal so ausgezeichnet sind.
   </p>
 
   <h2>Umrechnung</h2>
@@ -23,9 +32,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Warum gibt es €/100 g und €/kg?</strong><br />Beides ist korrekt. €/kg ist bei großen Mengen oft übersichtlicher.</p>
-  <p><strong>Wie rechne ich von kg nach g?</strong><br />1 kg = 1000 g.</p>
-  <p><strong>Warum weicht mein Ergebnis vom Regal ab?</strong><br />Oft wegen Rundung oder minimal anderer Mengenangaben.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

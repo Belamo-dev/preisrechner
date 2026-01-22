@@ -1,13 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Über diesen Rechner";
 const description = "Wofür der Preis pro 100 Rechner ist und wie du ihn nutzt.";
+
+const faq = [
+  { q: "Warum gibt es diese Seite?", a: "Damit du Produkte schnell und fair über den Grundpreis vergleichen kannst." },
+  { q: "Werden Cookies gesetzt?", a: "Nein. Es gibt keine Tracking Cookies. Eingaben können nur in der URL stehen, wenn du den Link teilst." },
+  { q: "Gibt es ein Nutzerkonto?", a: "Nein, es gibt keine Registrierung und keine Accounts." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Dieser Rechner hilft dir, Produkte fair zu vergleichen, auch wenn Packungsgrößen unterschiedlich sind.
@@ -21,7 +30,10 @@ const description = "Wofür der Preis pro 100 Rechner ist und wie du ihn nutzt."
   </p>
 
   <h2>Kontakt</h2>
-  <p>
-    Wenn du Feedback hast, nutze die Kontaktangaben im <a href="/impressum">Impressum</a>.
-  </p>
+  <p>Wenn du Feedback hast, nutze die Kontaktangaben im <a href="/impressum">Impressum</a>.</p>
+
+  <h2>FAQ</h2>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 </BaseLayout>

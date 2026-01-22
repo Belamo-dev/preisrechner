@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "ml in l umrechnen";
 const description =
   "Milliliter und Liter umrechnen, damit Grundpreis Vergleiche stimmen. Plus Rechner zum direkten Vergleich.";
+
+const faq = [
+  { q: "750 ml sind wie viel l?", a: "750 ml sind 0,75 l." },
+  { q: "1,5 l sind wie viel ml?", a: "1,5 l sind 1500 ml." },
+  { q: "Warum ist Umrechnen wichtig?", a: "Weil du nur mit gleichen Einheiten fair vergleichen kannst." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Bei Getränken und Flüssigkeiten ist mal ml, mal l angegeben. Mit der Umrechnung sind Preise schnell
@@ -27,9 +36,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>750 ml sind wie viel l?</strong><br />0,75 l.</p>
-  <p><strong>1,5 l sind wie viel ml?</strong><br />1500 ml.</p>
-  <p><strong>Warum zeigt der Laden oft €/l?</strong><br />Das ist üblich. Du kannst trotzdem pro 100 ml vergleichen und dann auf €/l hochrechnen.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

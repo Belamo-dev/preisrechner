@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Grundpreis berechnen";
 const description =
   "Grundpreis pro 100 g oder pro 100 ml berechnen. Damit du Produkte trotz unterschiedlicher Packungsgrößen vergleichen kannst.";
+
+const faq = [
+  { q: "Welche Einheiten unterstützt der Rechner?", a: "g, kg, ml und l. Der Rechner rechnet automatisch in die Basis um." },
+  { q: "Warum ist Grundpreis besser als Stückpreis?", a: "Weil Packungen unterschiedlich groß sind und der Stückpreis den Vergleich verzerrt." },
+  { q: "Kann ich Gewicht und Volumen vergleichen?", a: "Nein. Vergleiche Gewicht mit Gewicht und Volumen mit Volumen." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Der Grundpreis hilft dir, den echten Preis zu vergleichen. Egal ob 400 g vs 500 g oder 750 ml vs 1 l,
@@ -26,9 +35,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Welche Einheiten kann ich nutzen?</strong><br />g, kg, ml, l. Der Rechner rechnet automatisch um.</p>
-  <p><strong>Warum nicht direkt Stückpreis vergleichen?</strong><br />Weil Packungsgrößen unterschiedlich sind und Angebote täuschen können.</p>
-  <p><strong>Was ist besser: pro 100 oder pro 1?</strong><br />Pro 100 ist bei vielen Produkten Standard und gut vergleichbar.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

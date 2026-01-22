@@ -1,13 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Impressum";
 const description = "Pflichtangaben nach deutschem Recht. Bitte mit deinen Daten ausfüllen.";
+
+const faq = [
+  { q: "Warum braucht die Seite ein Impressum?", a: "In Deutschland sind viele Websites verpflichtet, ein Impressum mit Anbieterangaben bereitzustellen." },
+  { q: "Welche Daten muss ich eintragen?", a: "Name, ladungsfähige Anschrift und eine Kontaktmöglichkeit wie E-Mail. Je nach Fall kommen weitere Angaben dazu." },
+  { q: "Kann ich eine Firma oder Privatperson eintragen?", a: "Beides ist möglich. Wichtig ist, dass die Angaben korrekt und aktuell sind." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <h2>Angaben gemäß § 5 TMG</h2>
   <p>
@@ -28,4 +37,9 @@ const description = "Pflichtangaben nach deutschem Recht. Bitte mit deinen Daten
     Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit,
     Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden.
   </p>
+
+  <h2>FAQ</h2>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 </BaseLayout>

@@ -1,13 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Datenschutz";
 const description = "Datenschutzhinweise für diese Website. Kurz, verständlich und ohne Tracking.";
+
+const faq = [
+  { q: "Setzt die Seite Cookies?", a: "Nein. Es werden keine Tracking Cookies eingesetzt." },
+  { q: "Werden meine Eingaben gespeichert?", a: "Es gibt keine Konten. Eingaben können in der URL stehen, wenn du den Link teilst." },
+  { q: "Welche Daten fallen beim Hosting an?", a: "Der Hosting Anbieter kann technische Zugriffsdaten wie IP Adresse und Zeitpunkt verarbeiten, um den Betrieb sicherzustellen." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <h2>Allgemeines</h2>
   <p>
@@ -16,9 +25,7 @@ const description = "Datenschutzhinweise für diese Website. Kurz, verständlich
   </p>
 
   <h2>Cookies und Tracking</h2>
-  <p>
-    Es werden keine Cookies zu Werbezwecken gesetzt und es wird kein Tracking eingesetzt.
-  </p>
+  <p>Es werden keine Cookies zu Werbezwecken gesetzt und es wird kein Tracking eingesetzt.</p>
 
   <h2>Server Logs</h2>
   <p>
@@ -27,7 +34,10 @@ const description = "Datenschutzhinweise für diese Website. Kurz, verständlich
   </p>
 
   <h2>Links</h2>
-  <p>
-    Wenn du externe Links nutzt, gelten dort die jeweiligen Datenschutzhinweise der Anbieter.
-  </p>
+  <p>Wenn du externe Links nutzt, gelten dort die jeweiligen Datenschutzhinweise der Anbieter.</p>
+
+  <h2>FAQ</h2>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 </BaseLayout>

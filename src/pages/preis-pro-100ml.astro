@@ -1,15 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Preis pro 100 ml berechnen";
 const description =
   "Grundpreis pro 100 ml berechnen und Getränke, Kosmetik oder Reinigungsmittel fair vergleichen.";
+
+const faq = [
+  {
+    q: "Was, wenn Liter angegeben sind?",
+    a: "1 l entspricht 1000 ml. Du kannst l im Rechner auswählen, er rechnet automatisch um.",
+  },
+  {
+    q: "Kann ich damit auch Waschmittel vergleichen?",
+    a: "Ja, alles mit ml oder l funktioniert. Für Pulver oder feste Lebensmittel nutze die g Variante.",
+  },
+  {
+    q: "Warum zeigt der Laden manchmal €/l an?",
+    a: "Das ist nur eine andere Skalierung. €/l entspricht dem Wert pro 100 ml mal 10.",
+  },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Bei Flüssigkeiten unterscheiden sich Flaschengrößen stark. Der Grundpreis pro 100 ml macht es leicht,
@@ -23,10 +41,14 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was, wenn Liter angegeben sind?</strong><br />1 l = 1000 ml. Du kannst l im Rechner direkt auswählen.</p>
-  <p><strong>Kann ich damit auch Waschmittel vergleichen?</strong><br />Ja, alles mit ml oder l funktioniert. Für Pulver nimm die g Variante.</p>
-  <p><strong>Warum zeigt der Laden manchmal €/l an?</strong><br />€/l entspricht (€/100 ml) × 10.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>
-    <li><a href="/preis-pro-l
+    <li><a href="/preis-pro-liter">Preis pro Liter berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
+</BaseLayout>

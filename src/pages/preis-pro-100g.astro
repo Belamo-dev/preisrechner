@@ -1,15 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Preis pro 100 g berechnen";
 const description =
   "Grundpreis pro 100 g berechnen und Produkte mit unterschiedlichen Packungsgrößen fair vergleichen.";
+
+const faq = [
+  {
+    q: "Was, wenn die Menge in kg angegeben ist?",
+    a: "1 kg entspricht 1000 g. Du kannst kg im Rechner auswählen, er rechnet automatisch um.",
+  },
+  {
+    q: "Warum zeigt der Laden oft €/kg an?",
+    a: "Das ist nur eine andere Skalierung. €/kg entspricht dem Wert pro 100 g mal 10.",
+  },
+  {
+    q: "Warum sind große Packungen nicht immer günstiger?",
+    a: "Angebote und Marken können dazu führen, dass kleinere Packungen pro 100 g günstiger sind.",
+  },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Viele Angebote wirken günstig, sind es aber nicht, wenn die Packung kleiner ist. Der Grundpreis pro
@@ -23,9 +41,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was, wenn die Menge in kg angegeben ist?</strong><br />1 kg = 1000 g. Du kannst kg im Rechner direkt auswählen.</p>
-  <p><strong>Warum zeigt der Laden oft €/kg an?</strong><br />Das ist nur eine andere Skalierung. €/kg entspricht (€/100 g) × 10.</p>
-  <p><strong>Warum sind große Packungen nicht immer günstiger?</strong><br />Angebote und Marken können dazu führen, dass kleine Packungen pro 100 g günstiger sind.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

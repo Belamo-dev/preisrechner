@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Rabatt Rechner";
 const description =
   "Rabatt berechnen und den neuen Preis direkt im Grundpreis Rechner prüfen. Ideal für Angebote.";
+
+const faq = [
+  { q: "Wie berechne ich den neuen Preis mit Rabatt?", a: "Neuer Preis = Alter Preis × (1 - Rabatt/100)." },
+  { q: "Warum sollte ich danach den Grundpreis prüfen?", a: "Weil der Grundpreis zeigt, ob das Angebot pro 100 wirklich günstiger ist." },
+  { q: "Warum gibt es Rundungsunterschiede?", a: "Durch Cent Rundungen und abweichende Mengenangaben entstehen kleine Abweichungen." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Prozentangaben wirken gut, aber am Ende zählt der neue Grundpreis. Rechne zuerst den rabattierten
@@ -26,9 +35,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Wie berechne ich 10 % Rabatt?</strong><br />Neuer Preis = Alter Preis × 0,9.</p>
-  <p><strong>Warum ist der Grundpreis wichtiger als Prozent?</strong><br />Weil Packungsgrößen und Vergleichsprodukte unterschiedlich sein können.</p>
-  <p><strong>Gibt es Rundungsunterschiede?</strong><br />Ja, kleine Abweichungen durch Rundung sind normal.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

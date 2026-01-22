@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "g in kg umrechnen";
 const description =
   "Gramm und Kilogramm umrechnen, damit Grundpreis Vergleiche stimmen. Plus Rechner zum direkten Vergleich.";
+
+const faq = [
+  { q: "500 g sind wie viel kg?", a: "500 g sind 0,5 kg." },
+  { q: "0,75 kg sind wie viel g?", a: "0,75 kg sind 750 g." },
+  { q: "Warum ist Umrechnen wichtig?", a: "Weil du nur mit gleichen Einheiten fair vergleichen kannst." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Viele Produkte sind in g angegeben, manche in kg. Damit dein Vergleich stimmt, brauchst du eine
@@ -27,9 +36,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>500 g sind wie viel kg?</strong><br />0,5 kg.</p>
-  <p><strong>0,75 kg sind wie viel g?</strong><br />750 g.</p>
-  <p><strong>Warum zeigt der Rechner pro 100 an?</strong><br />Damit du direkt fair vergleichen kannst. Für €/kg kannst du einfach × 10 rechnen.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

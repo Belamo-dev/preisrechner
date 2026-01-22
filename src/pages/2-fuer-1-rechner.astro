@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "2 für 1 Angebot berechnen";
 const description =
   "2 für 1 Angebote richtig vergleichen und den effektiven Grundpreis berechnen. Schnell und einfach.";
+
+const faq = [
+  { q: "Wie rechne ich 2 für 1?", a: "Verdopple die Menge oder halbiere den Preis und rechne dann pro 100." },
+  { q: "Wie rechne ich 3 für 2?", a: "Preis mal 2 und Menge mal 3, dann den Grundpreis berechnen." },
+  { q: "Was ist 2. Artikel 50 %?", a: "Du zahlst effektiv 1,5 Artikelpreise für 2 Stück. Also Preis mal 1,5 und Menge mal 2." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Bei 2 für 1 bezahlst du einen Preis und bekommst die doppelte Menge. Für den Grundpreis ist das
@@ -26,9 +35,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Wie rechne ich 3 für 2?</strong><br />Preis × 2 und Menge × 3.</p>
-  <p><strong>Was ist mit 2. Artikel 50 %?</strong><br />Effektiv zahlst du 1,5 Artikelpreise für 2 Stück. Also Preis × 1,5 und Menge × 2.</p>
-  <p><strong>Gilt das auch für Getränke?</strong><br />Ja, für ml und l genauso.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>

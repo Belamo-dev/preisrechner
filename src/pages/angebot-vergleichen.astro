@@ -1,15 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
+import FaqJsonLd from "../components/FaqJsonLd.astro";
 
 const title = "Angebote vergleichen";
 const description =
   "Zwei Angebote vergleichen, auch wenn Packungsgrößen unterschiedlich sind. Entscheidend ist der Grundpreis pro 100.";
+
+const faq = [
+  { q: "Was ist besser: €/100 oder €/kg bzw €/l?", a: "Beides ist ok. Wichtig ist, dass du konsequent dieselbe Einheit nutzt." },
+  { q: "Wie vergleiche ich 2 für 1 Angebote?", a: "Verdopple die Menge oder halbiere den Preis und rechne dann pro 100." },
+  { q: "Warum weicht mein Ergebnis vom Regal ab?", a: "Rundungen und leicht andere Mengenangaben können kleine Unterschiede erzeugen." },
+];
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
+
+  <FaqJsonLd items={faq} />
 
   <p>
     Beim Einkaufen ist der Stückpreis oft eine Falle. Der Grundpreis pro 100 g oder pro 100 ml zeigt dir
@@ -27,9 +36,9 @@ const description =
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was ist besser: €/100 g oder €/kg?</strong><br />Beides ist ok. Wichtig ist, dass du konsequent dieselbe Einheit nutzt.</p>
-  <p><strong>Wie vergleiche ich 2 für 1 Angebote?</strong><br />Verdopple die Menge oder halbiere den Preis und rechne dann pro 100.</p>
-  <p><strong>Warum weicht mein Ergebnis vom Regal ab?</strong><br />Rundungen und leicht andere Mengenangaben können kleine Unterschiede erzeugen.</p>
+  <p><strong>{faq[0].q}</strong><br />{faq[0].a}</p>
+  <p><strong>{faq[1].q}</strong><br />{faq[1].a}</p>
+  <p><strong>{faq[2].q}</strong><br />{faq[2].a}</p>
 
   <h2>Weiter</h2>
   <ul>
