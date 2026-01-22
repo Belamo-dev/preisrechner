@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "ml in l umrechnen";
+const description = "Milliliter und Liter umrechnen, damit Grundpreis Vergleiche stimmen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>Umrechnung</h2>
+  <p><strong>1 l = 1000 ml</strong></p>
+  <p><strong>ml in l</strong>: ml / 1000</p>
+  <p><strong>l in ml</strong>: l × 1000</p>
+
+  <h2>Beispiele</h2>
+  <ul>
+    <li>750 ml = 0,75 l</li>
+    <li>500 ml = 0,5 l</li>
+    <li>1,5 l = 1500 ml</li>
+  </ul>
+
+  <h2>Rechner</h2>
+  <Calculator />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "Preis pro 100 ml berechnen";
+const description = "Grundpreis pro 100 ml berechnen und Getränke oder Kosmetik vergleichen. Schnell und kostenlos.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>Formel</h2>
+  <p><strong>Preis pro 100 ml</strong> = Preis / Menge in ml × 100</p>
+
+  <h2>Beispiel</h2>
+  <p>2,49 € für 750 ml: 2,49 / 750 × 100 = 0,33 € pro 100 ml</p>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Was, wenn Liter angegeben sind?</strong><br />1 l = 1000 ml. Also zuerst in ml umrechnen.</p>
+  <p><strong>Kann ich auch Shampoo oder Waschmittel vergleichen?</strong><br />Ja, alles mit ml oder l funktioniert genau so.</p>
+</BaseLayout>

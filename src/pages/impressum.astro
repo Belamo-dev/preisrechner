@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Impressum";
+---
+
+<BaseLayout title={title}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">Pflichtangaben nach deutschem Recht.</p>
+
+  <p>
+    Platzhalter. Trage hier deine Angaben ein: Name, Anschrift, Kontakt, ggf. USt IdNr.
+  </p>
+</BaseLayout>

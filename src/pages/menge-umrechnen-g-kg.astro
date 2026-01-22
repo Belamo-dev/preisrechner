@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "g in kg umrechnen";
+const description = "Gramm und Kilogramm umrechnen, damit Grundpreis Vergleiche stimmen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>Umrechnung</h2>
+  <p><strong>1 kg = 1000 g</strong></p>
+  <p><strong>g in kg</strong>: g / 1000</p>
+  <p><strong>kg in g</strong>: kg × 1000</p>
+
+  <h2>Beispiele</h2>
+  <ul>
+    <li>500 g = 0,5 kg</li>
+    <li>750 g = 0,75 kg</li>
+    <li>1,25 kg = 1250 g</li>
+  </ul>
+
+  <h2>Rechner</h2>
+  <Calculator />
+</BaseLayout>

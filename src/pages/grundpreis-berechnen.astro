@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "Grundpreis berechnen";
+const description = "Grundpreis aus Preis und Packungsgröße berechnen, pro 100 g oder pro 100 ml.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>Gewicht</h2>
+  <p><strong>Preis pro 100 g</strong> = Preis / Menge in g × 100</p>
+
+  <h2>Volumen</h2>
+  <p><strong>Preis pro 100 ml</strong> = Preis / Menge in ml × 100</p>
+
+  <h2>Typische Beispiele</h2>
+  <ul>
+    <li>500 g, 750 g, 1 kg</li>
+    <li>330 ml, 500 ml, 1 l</li>
+  </ul>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Warum ist der Grundpreis wichtig?</strong><br />Damit du unterschiedliche Packungsgrößen fair vergleichen kannst.</p>
+</BaseLayout>

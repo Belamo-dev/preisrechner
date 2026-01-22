@@ -1,17 +1,14 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
 
+const title = "Preis pro 100 Rechner";
+const description = "Preis pro 100 g/ml berechnen und zwei Produkte vergleichen. Schnell, kostenlos, ohne Anmeldung.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">Preis pro 100 Rechner</h1>
+  <p slot="header">{description}</p>
+
+  <Calculator />
+</BaseLayout>

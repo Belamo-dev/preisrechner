@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "2 für 1 Angebot berechnen";
+const description = "2 für 1 Angebote richtig vergleichen und den effektiven Grundpreis berechnen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>So rechnest du 2 für 1</h2>
+  <p>Du zahlst 1 Preis und bekommst 2 Mengen.</p>
+  <p><strong>Effektiver Stückpreis</strong> = Preis / 2</p>
+
+  <h2>Grundpreis Trick</h2>
+  <p>Für den Grundpreis: Menge verdoppeln und den normalen Preis eingeben.</p>
+  <p>Beispiel: 1 Packung 500 g kostet 3,49 €. Bei 2 für 1 gibst du 3,49 € und 1000 g ein.</p>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Was, wenn es 3 für 2 ist?</strong><br />Dann zahlst du 2 Preise und bekommst 3 Mengen. Also Menge × 3, Preis × 2.</p>
+</BaseLayout>

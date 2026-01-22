@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "Angebote vergleichen";
+const description = "Zwei Angebote vergleichen, auch wenn Packungsgrößen unterschiedlich sind. Grundpreis pro 100 nutzen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>So vergleichst du fair</h2>
+  <p>Vergleiche immer den Grundpreis pro 100 g oder pro 100 ml, nicht den Stückpreis.</p>
+
+  <h2>Beispiel</h2>
+  <p>500 g für 3,49 € vs. 400 g für 2,99 €. Der Grundpreis zeigt, was wirklich günstiger ist.</p>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Warum sind große Packungen nicht immer günstiger?</strong><br />Manchmal ist eine kleinere Packung im Angebot pro 100 günstiger.</p>
+</BaseLayout>

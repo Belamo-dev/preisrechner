@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "Rabatt Rechner";
+const description = "Rabatt berechnen und den neuen Preis direkt im Grundpreis Rechner prüfen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>Rabatt Formel</h2>
+  <p><strong>Neuer Preis</strong> = Alter Preis × (1 - Rabatt in % / 100)</p>
+
+  <h2>Beispiel</h2>
+  <p>3,49 € mit 20 % Rabatt: 3,49 × 0,8 = 2,79 €</p>
+
+  <h2>Grundpreis prüfen</h2>
+  <p>Gib den neuen Preis zusammen mit der Menge in den Rechner ein und vergleiche mit dem Original.</p>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Warum ist ein Rabatt manchmal trotzdem nicht günstiger?</strong><br />Wenn Packungsgrößen sich unterscheiden oder ein anderes Produkt pro 100 günstiger bleibt.</p>
+</BaseLayout>

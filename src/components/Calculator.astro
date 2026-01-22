@@ -1,0 +1,293 @@
+<style>
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .card h2 { margin: 0 0 10px; font-size: 18px; }
+  .row { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+  label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  input, select, button {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #0f1524;
+    color: var(--text);
+    font-size: 14px;
+  }
+  button {
+    cursor: pointer;
+    background: var(--accent);
+    border-color: transparent;
+    color: #08101f;
+    font-weight: 700;
+  }
+  button.secondary {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
+  }
+  .out {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px dashed var(--line);
+    color: var(--text);
+  }
+  .big { font-size: 18px; font-weight: 800; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .actions button { width: auto; padding: 10px 14px; }
+  .hint { margin-top: 12px; color: var(--muted); font-size: 12px; }
+  .full { grid-column: 1 / -1; }
+</style>
+
+<div class="grid">
+  <section class="card">
+    <h2>Produkt A</h2>
+    <div class="row">
+      <div>
+        <label for="priceA">Preis (Euro)</label>
+        <input id="priceA" inputmode="decimal" placeholder="z.B. 3,49" />
+      </div>
+      <div>
+        <label for="qtyA">Menge</label>
+        <input id="qtyA" inputmode="decimal" placeholder="z.B. 500" />
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="unitA">Einheit</label>
+        <select id="unitA">
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+          <option value="ml">ml</option>
+          <option value="l">l</option>
+        </select>
+      </div>
+      <div>
+        <label for="nameA">Name (optional)</label>
+        <input id="nameA" placeholder="z.B. Kaffee" />
+      </div>
+    </div>
+    <div class="out" id="outA">
+      <div class="big">-</div>
+      <div class="muted">Preis pro 100</div>
+      <div class="muted" id="detailA"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Produkt B</h2>
+    <div class="row">
+      <div>
+        <label for="priceB">Preis (Euro)</label>
+        <input id="priceB" inputmode="decimal" placeholder="z.B. 2,99" />
+      </div>
+      <div>
+        <label for="qtyB">Menge</label>
+        <input id="qtyB" inputmode="decimal" placeholder="z.B. 400" />
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="unitB">Einheit</label>
+        <select id="unitB">
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+          <option value="ml">ml</option>
+          <option value="l">l</option>
+        </select>
+      </div>
+      <div>
+        <label for="nameB">Name (optional)</label>
+        <input id="nameB" placeholder="z.B. Kaffee" />
+      </div>
+    </div>
+    <div class="out" id="outB">
+      <div class="big">-</div>
+      <div class="muted">Preis pro 100</div>
+      <div class="muted" id="detailB"></div>
+    </div>
+  </section>
+
+  <section class="card full">
+    <h2>Vergleich</h2>
+    <div class="out" id="outCompare">
+      <div class="big">-</div>
+      <div class="muted">Günstiger / Differenz</div>
+      <div class="muted" id="detailCompare"></div>
+    </div>
+
+    <div class="actions">
+      <button id="btnCopy" class="secondary" type="button">Ergebnis kopieren</button>
+      <button id="btnShare" class="secondary" type="button">Link kopieren</button>
+      <button id="btnReset" class="secondary" type="button">Zurücksetzen</button>
+    </div>
+
+    <div class="hint">
+      Dezimalzahl mit Komma oder Punkt. Werte werden in der URL gespeichert.
+    </div>
+  </section>
+</div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  function parseNumber(s) {
+    if (!s) return NaN;
+    const cleaned = String(s).trim().replace(/\s+/g, "").replace(",", ".");
+    const n = Number(cleaned);
+    return Number.isFinite(n) ? n : NaN;
+  }
+
+  function toBaseUnit(qty, unit) {
+    if (!Number.isFinite(qty)) return { qty: NaN, base: null };
+    if (unit === "g") return { qty, base: "g" };
+    if (unit === "kg") return { qty: qty * 1000, base: "g" };
+    if (unit === "ml") return { qty, base: "ml" };
+    if (unit === "l") return { qty: qty * 1000, base: "ml" };
+    return { qty: NaN, base: null };
+  }
+
+  function pricePer100(price, qty, unit) {
+    const p = parseNumber(price);
+    const q = parseNumber(qty);
+    const { qty: baseQty, base } = toBaseUnit(q, unit);
+    if (!Number.isFinite(p) || !Number.isFinite(baseQty) || baseQty <= 0) return { v: NaN, base: null };
+    return { v: (p / baseQty) * 100, base };
+  }
+
+  function fmtEuro(n) {
+    return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(n);
+  }
+
+  function fmtQty(qty, unit) {
+    const n = Number(qty);
+    const s = Number.isFinite(n) ? new Intl.NumberFormat("de-DE", { maximumFractionDigits: 3 }).format(n) : "-";
+    return `${s} ${unit}`;
+  }
+
+  function updateURL() {
+    const params = new URLSearchParams();
+    const map = [
+      ["pa","priceA"],["qa","qtyA"],["ua","unitA"],["na","nameA"],
+      ["pb","priceB"],["qb","qtyB"],["ub","unitB"],["nb","nameB"],
+    ];
+    for (const [key, id] of map) {
+      const el = $(id);
+      const val = (el && el.value != null) ? String(el.value).trim() : "";
+      if (val) params.set(key, val);
+    }
+    const newUrl = `${location.pathname}?${params.toString()}`;
+    history.replaceState(null, "", newUrl);
+  }
+
+  function loadFromURL() {
+    const p = new URLSearchParams(location.search);
+    const set = (key, id) => {
+      const v = p.get(key);
+      if (v != null) $(id).value = v;
+    };
+    set("pa","priceA"); set("qa","qtyA"); set("ua","unitA"); set("na","nameA");
+    set("pb","priceB"); set("qb","qtyB"); set("ub","unitB"); set("nb","nameB");
+  }
+
+  function calcAndRender() {
+    const a = pricePer100($("priceA").value, $("qtyA").value, $("unitA").value);
+    const b = pricePer100($("priceB").value, $("qtyB").value, $("unitB").value);
+
+    if (Number.isFinite(a.v)) {
+      $("outA").querySelector(".big").textContent = `${fmtEuro(a.v)} / 100 ${a.base}`;
+      $("detailA").textContent = `${fmtEuro(parseNumber($("priceA").value))} bei ${fmtQty(parseNumber($("qtyA").value), $("unitA").value)}`;
+    } else {
+      $("outA").querySelector(".big").textContent = "-";
+      $("detailA").textContent = "";
+    }
+
+    if (Number.isFinite(b.v)) {
+      $("outB").querySelector(".big").textContent = `${fmtEuro(b.v)} / 100 ${b.base}`;
+      $("detailB").textContent = `${fmtEuro(parseNumber($("priceB").value))} bei ${fmtQty(parseNumber($("qtyB").value), $("unitB").value)}`;
+    } else {
+      $("outB").querySelector(".big").textContent = "-";
+      $("detailB").textContent = "";
+    }
+
+    const compareBig = $("outCompare").querySelector(".big");
+    const compareDetail = $("detailCompare");
+
+    if (Number.isFinite(a.v) && Number.isFinite(b.v) && a.base === b.base) {
+      if (a.v === b.v) {
+        compareBig.textContent = "Beide gleich teuer (pro 100)";
+        compareDetail.textContent = `A und B liegen gleich bei ${fmtEuro(a.v)} / 100 ${a.base}.`;
+      } else {
+        const cheaper = a.v < b.v ? "A" : "B";
+        const diff = Math.abs(a.v - b.v);
+        const pct = (diff / Math.min(a.v, b.v)) * 100;
+        compareBig.textContent = `Produkt ${cheaper} ist günstiger`;
+        compareDetail.textContent = `Differenz: ${fmtEuro(diff)} pro 100 ${a.base} (${pct.toFixed(1).replace(".", ",")} %).`;
+      }
+    } else if (Number.isFinite(a.v) && Number.isFinite(b.v) && a.base !== b.base) {
+      compareBig.textContent = "Nicht vergleichbar";
+      compareDetail.textContent = "A ist Gewicht und B ist Volumen. Bitte gleiche Einheitstypen nutzen.";
+    } else {
+      compareBig.textContent = "-";
+      compareDetail.textContent = "";
+    }
+
+    updateURL();
+  }
+
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch { return false; }
+  }
+
+  function buildSummary() {
+    const nameA = $("nameA").value.trim() || "Produkt A";
+    const nameB = $("nameB").value.trim() || "Produkt B";
+    const a = pricePer100($("priceA").value, $("qtyA").value, $("unitA").value);
+    const b = pricePer100($("priceB").value, $("qtyB").value, $("unitB").value);
+
+    const lines = [];
+    if (Number.isFinite(a.v)) lines.push(`${nameA}: ${fmtEuro(a.v)} / 100 ${a.base}`);
+    if (Number.isFinite(b.v)) lines.push(`${nameB}: ${fmtEuro(b.v)} / 100 ${b.base}`);
+    if (Number.isFinite(a.v) && Number.isFinite(b.v) && a.base === b.base) {
+      if (a.v === b.v) lines.push("Vergleich: gleich teuer");
+      else lines.push(`Vergleich: ${(a.v < b.v) ? nameA : nameB} ist günstiger`);
+    }
+    return lines.join("\n");
+  }
+
+  function resetAll() {
+    for (const id of ["priceA","qtyA","nameA","priceB","qtyB","nameB"]) $(id).value = "";
+    $("unitA").value = "g";
+    $("unitB").value = "g";
+    history.replaceState(null, "", location.pathname);
+    calcAndRender();
+  }
+
+  loadFromURL();
+  calcAndRender();
+
+  ["priceA","qtyA","unitA","nameA","priceB","qtyB","unitB","nameB"].forEach((id) =>
+    $(id).addEventListener("input", calcAndRender)
+  );
+
+  $("btnCopy").addEventListener("click", async () => {
+    const ok = await copyText(buildSummary());
+    if (!ok) alert("Kopieren nicht möglich. Bitte manuell markieren und kopieren.");
+  });
+
+  $("btnShare").addEventListener("click", async () => {
+    const url = location.href;
+    const ok = await copyText(url);
+    if (!ok) alert("Kopieren nicht möglich. Link: " + url);
+  });
+
+  $("btnReset").addEventListener("click", resetAll);
+</script>

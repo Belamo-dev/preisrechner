@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calculator from "../components/Calculator.astro";
+
+const title = "Preis pro kg berechnen";
+const description = "Preis pro Kilogramm berechnen und Packungsgrößen fair vergleichen.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <h2>So rechnest du um</h2>
+  <p>Wenn du einen Preis pro kg möchtest, rechne zuerst alles auf 100 g und dann hoch.</p>
+  <p><strong>Preis pro kg</strong> = (Preis pro 100 g) × 10</p>
+
+  <h2>Beispiel</h2>
+  <p>0,70 € pro 100 g entspricht 7,00 € pro kg.</p>
+
+  <h2>Rechner</h2>
+  <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>Warum ist €/kg sinnvoll?</strong><br />Bei größeren Mengen ist €/kg oft leichter vergleichbar.</p>
+  <p><strong>Was ist besser, €/kg oder €/100 g?</strong><br />Beides ist ok. €/100 g ist in Deutschland sehr verbreitet.</p>
+</BaseLayout>
