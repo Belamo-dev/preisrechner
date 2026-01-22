@@ -7,9 +7,9 @@ const title = "Datenschutz";
 const description = "Datenschutzhinweise für diese Website. Kurz, verständlich und ohne Tracking.";
 
 const faq = [
-  { q: "Setzt die Seite Cookies?", a: "Nein. Es werden keine Tracking Cookies eingesetzt." },
-  { q: "Werden meine Eingaben gespeichert?", a: "Es gibt keine Konten. Eingaben können in der URL stehen, wenn du den Link teilst." },
-  { q: "Welche Daten fallen beim Hosting an?", a: "Der Hosting Anbieter kann technische Zugriffsdaten wie IP Adresse und Zeitpunkt verarbeiten, um den Betrieb sicherzustellen." },
+  { q: "Setzt die Seite Cookies?", a: "Der Rechner selbst setzt keine Tracking Cookies. Falls Werbung (Google AdSense) aktiv ist, können Cookies/IDs für Anzeigenzwecke verwendet werden." },
+  { q: "Werden meine Eingaben gespeichert?", a: "Nein. Es gibt keine Nutzerkonten. Deine Eingaben werden nicht serverseitig gespeichert." },
+  { q: "Welche Daten fallen beim Hosting an?", a: "Beim Hosting können technische Zugriffsdaten (z. B. IP Adresse, Zeitpunkt, angeforderte URL) in Server Logs anfallen, um den Betrieb zu gewährleisten." },
 ];
 
 const related = [
@@ -23,23 +23,53 @@ const related = [
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>Allgemeines</h2>
+  <h2>1. Überblick</h2>
   <p>
-    Diese Website dient der Berechnung von Grundpreisen. Es gibt keine Nutzerkonten und keine
-    Registrierung.
+    Diese Website bietet Rechner zur Grundpreis Berechnung. Es gibt keine Registrierung, keine Nutzerkonten
+    und keine direkte Erhebung von Profildaten durch den Betreiber.
   </p>
 
-  <h2>Cookies und Tracking</h2>
-  <p>Es werden keine Cookies zu Werbezwecken gesetzt und es wird kein Tracking eingesetzt.</p>
-
-  <h2>Server Logs</h2>
+  <h2>2. Hosting über Cloudflare Pages</h2>
   <p>
-    Beim Aufruf der Website kann der Hosting Anbieter technische Zugriffsdaten verarbeiten, wie IP Adresse,
-    Zeitpunkt und aufgerufene Seite, um den Betrieb sicherzustellen.
+    Diese Website wird über Cloudflare Pages bereitgestellt. Beim Abruf der Website verarbeitet der Hosting Anbieter
+    technische Daten (z. B. IP Adresse, Zeitstempel, angeforderte Ressource), um die Website auszuliefern,
+    die Sicherheit zu gewährleisten und Missbrauch abzuwehren. Diese Daten können in Log Dateien anfallen.
   </p>
 
-  <h2>Links</h2>
-  <p>Wenn du externe Links nutzt, gelten dort die jeweiligen Datenschutzhinweise der Anbieter.</p>
+  <h2>3. Cookies und lokale Speicherung</h2>
+  <p>
+    Der Rechner selbst setzt keine Tracking Cookies. Der Browser kann technisch notwendige Daten speichern
+    (z. B. Cache). Zusätzlich können externe Dienste (siehe Werbung) eigene Cookies oder ähnliche Technologien nutzen.
+  </p>
+
+  <h2>4. Werbung (Google AdSense) optional</h2>
+  <p>
+    Auf dieser Website kann Werbung über Google AdSense eingebunden werden. Wenn AdSense aktiv ist, können
+    durch Google oder Werbepartner Cookies, Gerätekennungen oder ähnliche Technologien eingesetzt werden, um
+    Anzeigen auszuspielen, zu messen und zu personalisieren. Dabei können Informationen über Nutzung und Gerät
+    verarbeitet werden.
+  </p>
+  <p>
+    Wenn AdSense aktuell deaktiviert ist, wird statt Werbung nur ein Platzhalter angezeigt.
+  </p>
+
+  <h2>5. Kontaktaufnahme</h2>
+  <p>
+    Wenn du per E-Mail Kontakt aufnimmst, werden die von dir übermittelten Daten (z. B. E-Mail Adresse und Inhalt)
+    zur Bearbeitung der Anfrage verarbeitet.
+  </p>
+
+  <h2>6. Deine Rechte</h2>
+  <p>
+    Du hast je nach anwendbarem Recht Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
+    Widerspruch und Datenübertragbarkeit. Außerdem hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde
+    zu beschweren.
+  </p>
+
+  <h2>7. Verantwortlicher</h2>
+  <p>
+    Der Verantwortliche ist im <a href="/impressum">Impressum</a> genannt.
+  </p>
 
   <FaqBlock items={faq} />
   <RelatedLinks links={related} />

@@ -4,12 +4,21 @@ import FaqBlock from "../components/FaqBlock.astro";
 import RelatedLinks from "../components/RelatedLinks.astro";
 
 const title = "Impressum";
-const description = "Pflichtangaben nach deutschem Recht. Bitte mit deinen Daten ausfüllen.";
+const description = "Anbieterkennzeichnung und Kontakt. Bitte mit deinen Daten ausfüllen.";
 
 const faq = [
-  { q: "Warum braucht die Seite ein Impressum?", a: "In Deutschland sind viele Websites verpflichtet, Anbieterangaben bereitzustellen." },
-  { q: "Welche Daten muss ich eintragen?", a: "Name, ladungsfähige Anschrift und eine Kontaktmöglichkeit wie E-Mail. Je nach Fall kommen weitere Angaben dazu." },
-  { q: "Kann ich Privatperson oder Firma eintragen?", a: "Beides ist möglich. Wichtig ist, dass die Angaben korrekt und aktuell sind." },
+  {
+    q: "Warum braucht die Seite ein Impressum?",
+    a: "In Deutschland sind viele Websites verpflichtet, Anbieterangaben bereitzustellen.",
+  },
+  {
+    q: "Welche Daten muss ich eintragen?",
+    a: "Name, ladungsfähige Anschrift und eine Kontaktmöglichkeit wie E-Mail. Je nach Fall können weitere Angaben nötig sein.",
+  },
+  {
+    q: "Kann ich Privatperson oder Firma eintragen?",
+    a: "Beides ist möglich. Wichtig ist, dass die Angaben korrekt, vollständig und aktuell sind.",
+  },
 ];
 
 const related = [
@@ -25,22 +34,40 @@ const related = [
 
   <h2>Angaben gemäß § 5 TMG</h2>
   <p>
-    Name: DEIN NAME<br />
-    Straße Hausnummer: DEINE STRASSE<br />
-    PLZ Ort: DEIN ORT<br />
-    Land: Deutschland
+    <strong>Betreiber:</strong> Oliver Jung<br />
+    <strong>Anschrift:</strong> Zwerchweg 12, 75305 Neuenbürg, DEUTSCHLAND
   </p>
 
   <h2>Kontakt</h2>
   <p>
-    E-Mail: DEINE EMAIL<br />
-    Telefon: DEINE TELEFONNUMMER (optional)
+    <strong>E-Mail:</strong> jungoliver@outlook.com<br />
+  </p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>
+    Oliver Jung<br />
+    Zwerchweg 12, 75305 Neuenbürg, DEUTSCHLAND
   </p>
 
   <h2>Haftung für Inhalte</h2>
   <p>
-    Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit,
-    Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden.
+    Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+    Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
+    übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen,
+    die auf eine rechtswidrige Tätigkeit hinweisen.
+  </p>
+
+  <h2>Haftung für Links</h2>
+  <p>
+    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+    Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
+    Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+  </p>
+
+  <h2>Urheberrecht</h2>
+  <p>
+    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+    Urheberrecht. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
   </p>
 
   <FaqBlock items={faq} />
