@@ -3,24 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Preis pro kg berechnen";
-const description = "Preis pro Kilogramm berechnen und Packungsgrößen fair vergleichen.";
+const description =
+  "Preis pro Kilogramm berechnen und Packungsgrößen fair vergleichen. Einfach aus Preis und Menge.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>So rechnest du um</h2>
-  <p>Wenn du einen Preis pro kg möchtest, rechne zuerst alles auf 100 g und dann hoch.</p>
-  <p><strong>Preis pro kg</strong> = (Preis pro 100 g) × 10</p>
+  <p>
+    Wenn du einen Preis pro kg möchtest, kannst du das über den Grundpreis pro 100 g ableiten. Das ist
+    praktisch, weil viele Produkte am Regal genau so ausgezeichnet sind.
+  </p>
 
-  <h2>Beispiel</h2>
-  <p>0,70 € pro 100 g entspricht 7,00 € pro kg.</p>
+  <h2>Umrechnung</h2>
+  <p><strong>Preis pro kg</strong> = (Preis pro 100 g) × 10</p>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Warum ist €/kg sinnvoll?</strong><br />Bei größeren Mengen ist €/kg oft leichter vergleichbar.</p>
-  <p><strong>Was ist besser, €/kg oder €/100 g?</strong><br />Beides ist ok. €/100 g ist in Deutschland sehr verbreitet.</p>
+  <p><strong>Warum gibt es €/100 g und €/kg?</strong><br />Beides ist korrekt. €/kg ist bei großen Mengen oft übersichtlicher.</p>
+  <p><strong>Wie rechne ich von kg nach g?</strong><br />1 kg = 1000 g.</p>
+  <p><strong>Warum weicht mein Ergebnis vom Regal ab?</strong><br />Oft wegen Rundung oder minimal anderer Mengenangaben.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/menge-umrechnen-g-kg">g und kg umrechnen</a></li>
+    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+  </ul>
 </BaseLayout>

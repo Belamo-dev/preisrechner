@@ -3,25 +3,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "g in kg umrechnen";
-const description = "Gramm und Kilogramm umrechnen, damit Grundpreis Vergleiche stimmen.";
+const description =
+  "Gramm und Kilogramm umrechnen, damit Grundpreis Vergleiche stimmen. Plus Rechner zum direkten Vergleich.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>Umrechnung</h2>
-  <p><strong>1 kg = 1000 g</strong></p>
-  <p><strong>g in kg</strong>: g / 1000</p>
-  <p><strong>kg in g</strong>: kg × 1000</p>
+  <p>
+    Viele Produkte sind in g angegeben, manche in kg. Damit dein Vergleich stimmt, brauchst du eine
+    schnelle Umrechnung. Der Rechner unterstützt beide Einheiten direkt.
+  </p>
 
-  <h2>Beispiele</h2>
+  <h2>Umrechnung</h2>
   <ul>
-    <li>500 g = 0,5 kg</li>
-    <li>750 g = 0,75 kg</li>
-    <li>1,25 kg = 1250 g</li>
+    <li><strong>1 kg = 1000 g</strong></li>
+    <li><strong>g in kg</strong>: g / 1000</li>
+    <li><strong>kg in g</strong>: kg × 1000</li>
   </ul>
 
   <h2>Rechner</h2>
   <Calculator />
+
+  <h2>FAQ</h2>
+  <p><strong>500 g sind wie viel kg?</strong><br />0,5 kg.</p>
+  <p><strong>0,75 kg sind wie viel g?</strong><br />750 g.</p>
+  <p><strong>Warum zeigt der Rechner pro 100 an?</strong><br />Damit du direkt fair vergleichen kannst. Für €/kg kannst du einfach × 10 rechnen.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
+    <li><a href="/preis-pro-kg">Preis pro kg berechnen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
 </BaseLayout>

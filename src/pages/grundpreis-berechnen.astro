@@ -3,28 +3,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Grundpreis berechnen";
-const description = "Grundpreis aus Preis und Packungsgröße berechnen, pro 100 g oder pro 100 ml.";
+const description =
+  "Grundpreis pro 100 g oder pro 100 ml berechnen. Damit du Produkte trotz unterschiedlicher Packungsgrößen vergleichen kannst.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>Gewicht</h2>
-  <p><strong>Preis pro 100 g</strong> = Preis / Menge in g × 100</p>
+  <p>
+    Der Grundpreis hilft dir, den echten Preis zu vergleichen. Egal ob 400 g vs 500 g oder 750 ml vs 1 l,
+    pro 100 gerechnet ist es sofort fair.
+  </p>
 
-  <h2>Volumen</h2>
-  <p><strong>Preis pro 100 ml</strong> = Preis / Menge in ml × 100</p>
-
-  <h2>Typische Beispiele</h2>
+  <h2>Formeln</h2>
   <ul>
-    <li>500 g, 750 g, 1 kg</li>
-    <li>330 ml, 500 ml, 1 l</li>
+    <li><strong>Preis pro 100 g</strong> = Preis / Menge in g × 100</li>
+    <li><strong>Preis pro 100 ml</strong> = Preis / Menge in ml × 100</li>
   </ul>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Warum ist der Grundpreis wichtig?</strong><br />Damit du unterschiedliche Packungsgrößen fair vergleichen kannst.</p>
+  <p><strong>Welche Einheiten kann ich nutzen?</strong><br />g, kg, ml, l. Der Rechner rechnet automatisch um.</p>
+  <p><strong>Warum nicht direkt Stückpreis vergleichen?</strong><br />Weil Packungsgrößen unterschiedlich sind und Angebote täuschen können.</p>
+  <p><strong>Was ist besser: pro 100 oder pro 1?</strong><br />Pro 100 ist bei vielen Produkten Standard und gut vergleichbar.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/preis-pro-100g">Preis pro 100 g berechnen</a></li>
+    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+  </ul>
 </BaseLayout>

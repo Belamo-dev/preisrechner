@@ -1,13 +1,31 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
 const title = "Impressum";
+const description = "Pflichtangaben nach deutschem Recht. Bitte mit deinen Daten ausfüllen.";
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
-  <p slot="header">Pflichtangaben nach deutschem Recht.</p>
+  <p slot="header">{description}</p>
 
+  <h2>Angaben gemäß § 5 TMG</h2>
   <p>
-    Platzhalter. Trage hier deine Angaben ein: Name, Anschrift, Kontakt, ggf. USt IdNr.
+    Name: DEIN NAME<br />
+    Straße Hausnummer: DEINE STRASSE<br />
+    PLZ Ort: DEIN ORT<br />
+    Land: Deutschland
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: DEINE EMAIL<br />
+    Telefon: DEINE TELEFONNUMMER (optional)
+  </p>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>
+    Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit,
+    Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden.
   </p>
 </BaseLayout>

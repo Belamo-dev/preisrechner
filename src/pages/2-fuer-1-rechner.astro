@@ -3,24 +3,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "2 für 1 Angebot berechnen";
-const description = "2 für 1 Angebote richtig vergleichen und den effektiven Grundpreis berechnen.";
+const description =
+  "2 für 1 Angebote richtig vergleichen und den effektiven Grundpreis berechnen. Schnell und einfach.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>So rechnest du 2 für 1</h2>
-  <p>Du zahlst 1 Preis und bekommst 2 Mengen.</p>
-  <p><strong>Effektiver Stückpreis</strong> = Preis / 2</p>
+  <p>
+    Bei 2 für 1 bezahlst du einen Preis und bekommst die doppelte Menge. Für den Grundpreis ist das
+    einfach: Menge verdoppeln oder Preis halbieren.
+  </p>
 
-  <h2>Grundpreis Trick</h2>
-  <p>Für den Grundpreis: Menge verdoppeln und den normalen Preis eingeben.</p>
-  <p>Beispiel: 1 Packung 500 g kostet 3,49 €. Bei 2 für 1 gibst du 3,49 € und 1000 g ein.</p>
+  <h2>So rechnest du</h2>
+  <ul>
+    <li>Variante 1: Menge × 2, Preis bleibt gleich</li>
+    <li>Variante 2: Preis / 2, Menge bleibt gleich</li>
+  </ul>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was, wenn es 3 für 2 ist?</strong><br />Dann zahlst du 2 Preise und bekommst 3 Mengen. Also Menge × 3, Preis × 2.</p>
+  <p><strong>Wie rechne ich 3 für 2?</strong><br />Preis × 2 und Menge × 3.</p>
+  <p><strong>Was ist mit 2. Artikel 50 %?</strong><br />Effektiv zahlst du 1,5 Artikelpreise für 2 Stück. Also Preis × 1,5 und Menge × 2.</p>
+  <p><strong>Gilt das auch für Getränke?</strong><br />Ja, für ml und l genauso.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/rabatt-rechner">Rabatt berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
 </BaseLayout>

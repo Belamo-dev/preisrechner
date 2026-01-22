@@ -1,14 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
 const title = "Datenschutz";
+const description = "Datenschutzhinweise für diese Website. Kurz, verständlich und ohne Tracking.";
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
-  <p slot="header">Kurz und klar, später erweiterbar.</p>
+  <p slot="header">{description}</p>
 
+  <h2>Allgemeines</h2>
   <p>
-    Platzhalter. Sobald du Tracking oder Ads nutzt, muss das hier sauber ergänzt werden.
-    Aktuell: keine Cookies, kein Tracking, rein statische Seite.
+    Diese Website dient der Berechnung von Grundpreisen. Es gibt keine Nutzerkonten und keine
+    Registrierung.
+  </p>
+
+  <h2>Cookies und Tracking</h2>
+  <p>
+    Es werden keine Cookies zu Werbezwecken gesetzt und es wird kein Tracking eingesetzt.
+  </p>
+
+  <h2>Server Logs</h2>
+  <p>
+    Beim Aufruf der Website kann der Hosting Anbieter technische Zugriffsdaten verarbeiten, wie IP Adresse,
+    Zeitpunkt und aufgerufene Seite, um den Betrieb sicherzustellen.
+  </p>
+
+  <h2>Links</h2>
+  <p>
+    Wenn du externe Links nutzt, gelten dort die jeweiligen Datenschutzhinweise der Anbieter.
   </p>
 </BaseLayout>

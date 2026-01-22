@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="Jdf2P-A0e4P3PQZo514ds_cSS_EjW1xfv2f6jVo6uQw" />
-<link rel="canonical" href={Astro.url.href} />
+<link rel="canonical" href={Astro.url.origin + Astro.url.pathname} />
     <title>{title}</title>
     {description ? <meta name="description" content={description} /> : null}
     <style>
@@ -82,7 +82,7 @@ const { title, description } = Astro.props;
       </main>
 
       <footer class="footer">
-        <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+<a href="/ueber">Über</a> · <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
       </footer>
     </div>
   </body>

@@ -3,24 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Preis pro Liter berechnen";
-const description = "Preis pro Liter berechnen und Flüssigkeiten schnell vergleichen.";
+const description =
+  "Preis pro Liter berechnen und Flüssigkeiten fair vergleichen. Praktisch für Getränke, Öl und Reinigungsmittel.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>So rechnest du um</h2>
-  <p>Erst auf 100 ml rechnen, dann hochskalieren.</p>
-  <p><strong>Preis pro Liter</strong> = (Preis pro 100 ml) × 10</p>
+  <p>
+    Wenn du Literpreise vergleichen willst, kannst du über den Grundpreis pro 100 ml rechnen. Das
+    funktioniert für alle Produkte mit ml oder l.
+  </p>
 
-  <h2>Beispiel</h2>
-  <p>0,33 € pro 100 ml entspricht 3,30 € pro Liter.</p>
+  <h2>Umrechnung</h2>
+  <p><strong>Preis pro Liter</strong> = (Preis pro 100 ml) × 10</p>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was, wenn ich nur ml habe?</strong><br />Das ist ideal, weil 100 ml direkt passt.</p>
-  <p><strong>Kann ich Öl, Milch, Saft vergleichen?</strong><br />Ja, alles mit ml oder l geht.</p>
+  <p><strong>Wie rechne ich von l nach ml?</strong><br />1 l = 1000 ml.</p>
+  <p><strong>Kann ich damit auch Shampoo vergleichen?</strong><br />Ja, alles mit ml oder l passt.</p>
+  <p><strong>Warum zeigt der Laden oft €/l?</strong><br />Das ist üblich bei Getränken. Du kannst trotzdem pro 100 ml vergleichen.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/menge-umrechnen-ml-l">ml und l umrechnen</a></li>
+    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+  </ul>
 </BaseLayout>

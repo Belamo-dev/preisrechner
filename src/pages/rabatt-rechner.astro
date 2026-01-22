@@ -3,25 +3,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Rabatt Rechner";
-const description = "Rabatt berechnen und den neuen Preis direkt im Grundpreis Rechner prüfen.";
+const description =
+  "Rabatt berechnen und den neuen Preis direkt im Grundpreis Rechner prüfen. Ideal für Angebote.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>Rabatt Formel</h2>
+  <p>
+    Prozentangaben wirken gut, aber am Ende zählt der neue Grundpreis. Rechne zuerst den rabattierten
+    Preis aus und gib ihn dann im Rechner ein.
+  </p>
+
+  <h2>Formel</h2>
   <p><strong>Neuer Preis</strong> = Alter Preis × (1 - Rabatt in % / 100)</p>
 
   <h2>Beispiel</h2>
   <p>3,49 € mit 20 % Rabatt: 3,49 × 0,8 = 2,79 €</p>
 
-  <h2>Grundpreis prüfen</h2>
-  <p>Gib den neuen Preis zusammen mit der Menge in den Rechner ein und vergleiche mit dem Original.</p>
-
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Warum ist ein Rabatt manchmal trotzdem nicht günstiger?</strong><br />Wenn Packungsgrößen sich unterscheiden oder ein anderes Produkt pro 100 günstiger bleibt.</p>
+  <p><strong>Wie berechne ich 10 % Rabatt?</strong><br />Neuer Preis = Alter Preis × 0,9.</p>
+  <p><strong>Warum ist der Grundpreis wichtiger als Prozent?</strong><br />Weil Packungsgrößen und Vergleichsprodukte unterschiedlich sein können.</p>
+  <p><strong>Gibt es Rundungsunterschiede?</strong><br />Ja, kleine Abweichungen durch Rundung sind normal.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+    <li><a href="/2-fuer-1-rechner">2 für 1 Angebot berechnen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
 </BaseLayout>
