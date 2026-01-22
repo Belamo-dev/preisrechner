@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Über diesen Rechner";
+const description = "Wofür der Preis pro 100 Rechner ist und wie du ihn nutzt.";
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 slot="header">{title}</h1>
+  <p slot="header">{description}</p>
+
+  <p>Dieser Rechner hilft dir, Produkte fair zu vergleichen, auch wenn Packungsgrößen unterschiedlich sind. Du gibst Preis und Menge ein, und bekommst den Grundpreis pro 100 g oder 100 ml.</p>
+  <p>Die Seite speichert keine Accounts. Eingaben werden nur in der URL gespeichert, damit du Ergebnisse teilen kannst.</p>
+</BaseLayout>
