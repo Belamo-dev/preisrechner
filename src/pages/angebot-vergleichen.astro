@@ -3,22 +3,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Angebote vergleichen";
-const description = "Zwei Angebote vergleichen, auch wenn Packungsgrößen unterschiedlich sind. Grundpreis pro 100 nutzen.";
+const description =
+  "Zwei Angebote vergleichen, auch wenn Packungsgrößen unterschiedlich sind. Entscheidend ist der Grundpreis pro 100.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
-  <h2>So vergleichst du fair</h2>
-  <p>Vergleiche immer den Grundpreis pro 100 g oder pro 100 ml, nicht den Stückpreis.</p>
+  <p>
+    Beim Einkaufen ist der Stückpreis oft eine Falle: unterschiedliche Mengen machen den Vergleich schwer.
+    Der Grundpreis pro 100 g oder 100 ml zeigt dir objektiv, welches Angebot günstiger ist.
+  </p>
 
-  <h2>Beispiel</h2>
-  <p>500 g für 3,49 € vs. 400 g für 2,99 €. Der Grundpreis zeigt, was wirklich günstiger ist.</p>
+  <h2>Tipps für einen fairen Vergleich</h2>
+  <ul>
+    <li>Vergleiche immer pro 100 g oder pro 100 ml.</li>
+    <li>Nutze die gleiche Einheit (g/ kg oder ml/ l) für beide Produkte.</li>
+    <li>Bei 2 für 1 oder 3 für 2: Menge und Preis entsprechend anpassen.</li>
+  </ul>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Warum sind große Packungen nicht immer günstiger?</strong><br />Manchmal ist eine kleinere Packung im Angebot pro 100 günstiger.</p>
+  <p><strong>Was ist besser: €/100 g oder €/kg?</strong><br />Beides ist gleichwertig. Wichtig ist, dass du konsequent dieselbe Einheit nutzt.</p>
+  <p><strong>Wie vergleiche ich 2 für 1 Angebote?</strong><br />Verdopple die Menge (oder halbiere den Preis) und rechne dann den Grundpreis.</p>
+  <p><strong>Warum weicht mein Ergebnis vom Regalgrundpreis ab?</strong><br />Rundungen und leicht andere Mengenangaben können kleine Unterschiede erzeugen.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/2-fuer-1-rechner">2 für 1 Angebot berechnen</a></li>
+    <li><a href="/rabatt-rechner">Rabatt berechnen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
 </BaseLayout>

@@ -3,23 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Calculator from "../components/Calculator.astro";
 
 const title = "Preis pro 100 g berechnen";
-const description = "Grundpreis pro 100 g schnell berechnen und Produkte vergleichen. Kostenlos, ohne Anmeldung.";
+const description =
+  "Grundpreis pro 100 g berechnen und Produkte mit unterschiedlichen Packungsgrößen fair vergleichen.";
 ---
 
 <BaseLayout title={title} description={description}>
   <h1 slot="header">{title}</h1>
   <p slot="header">{description}</p>
 
+  <p>
+    Viele Angebote wirken günstig, sind es aber nicht, wenn die Packung kleiner ist. Mit dem
+    Grundpreis pro 100 g vergleichst du fair und siehst sofort, welches Produkt wirklich günstiger ist.
+  </p>
+
   <h2>Formel</h2>
   <p><strong>Preis pro 100 g</strong> = Preis / Menge in g × 100</p>
-
-  <h2>Beispiel</h2>
-  <p>3,49 € für 500 g: 3,49 / 500 × 100 = 0,70 € pro 100 g</p>
 
   <h2>Rechner</h2>
   <Calculator />
 
   <h2>FAQ</h2>
-  <p><strong>Was, wenn die Packung in kg angegeben ist?</strong><br />1 kg = 1000 g. Also zuerst in g umrechnen.</p>
-  <p><strong>Warum steht manchmal schon ein Grundpreis am Regal?</strong><br />Viele Läden zeigen €/kg oder €/100 g direkt an. Der Rechner hilft beim Vergleichen.</p>
+  <p><strong>Was, wenn die Menge in kg angegeben ist?</strong><br />1 kg = 1000 g. Du kannst kg im Rechner direkt auswählen.</p>
+  <p><strong>Warum wird oft €/kg statt €/100 g angezeigt?</strong><br />Beides ist korrekt. €/100 g ist in Deutschland sehr verbreitet, €/kg ist bei großen Mengen übersichtlicher.</p>
+  <p><strong>Warum sind große Packungen nicht immer günstiger?</strong><br />Angebote, Marken und Aktionen können dazu führen, dass kleinere Packungen pro 100 g günstiger sind.</p>
+
+  <h2>Weiter</h2>
+  <ul>
+    <li><a href="/preis-pro-100ml">Preis pro 100 ml berechnen</a></li>
+    <li><a href="/angebot-vergleichen">Angebote vergleichen</a></li>
+    <li><a href="/grundpreis-berechnen">Grundpreis berechnen</a></li>
+  </ul>
 </BaseLayout>
