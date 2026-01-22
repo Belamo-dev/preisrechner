@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://preisrechner-1ie.pages.dev/sitemap.xml
+Sitemap: https://preisrechner-1ie.pages.dev/sitemap-index.xml

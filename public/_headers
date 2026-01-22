@@ -8,6 +8,4 @@
 
 /robots.txt
   X-Robots-Tag: index, follow
-
-/*
-  X-Robots-Tag: index, follow
+  Content-Type: text/plain; charset=utf-8
