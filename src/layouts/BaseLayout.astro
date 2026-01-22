@@ -1,6 +1,12 @@
 ---
 const { title, description } = Astro.props;
 const canonical = Astro.url.origin + Astro.url.pathname;
+
+// Assets in /public
+const ogImage = `${Astro.url.origin}/og.png`;     // falls du PNG nutzt
+const ogImageSvg = `${Astro.url.origin}/og.svg`; // Fallback, wenn du nur SVG hast
+const faviconSvg = `${Astro.url.origin}/favicon.svg`;
+const manifestUrl = `${Astro.url.origin}/site.webmanifest`;
 ---
 
 <!doctype html>
@@ -12,6 +18,9 @@ const canonical = Astro.url.origin + Astro.url.pathname;
     <meta name="google-site-verification" content="Jdf2P-A0e4P3PQZo514ds_cSS_EjW1xfv2f6jVo6uQw" />
     <link rel="canonical" href={canonical} />
 
+    <link rel="icon" href={faviconSvg} type="image/svg+xml" />
+    <link rel="manifest" href={manifestUrl} />
+
     <title>{title}</title>
     {description ? <meta name="description" content={description} /> : null}
 
@@ -22,9 +31,18 @@ const canonical = Astro.url.origin + Astro.url.pathname;
     {description ? <meta property="og:description" content={description} /> : null}
     <meta property="og:url" content={canonical} />
 
-    <meta name="twitter:card" content="summary" />
+    {/* Social Preview Image */}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:alt" content="Preis pro 100 Rechner" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content={ogImageSvg} />
+
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     {description ? <meta name="twitter:description" content={description} /> : null}
+    <meta name="twitter:image" content={ogImage} />
 
     <style>
       :root {
